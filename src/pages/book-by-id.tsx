@@ -15,7 +15,6 @@ export default function BookByIdPage() {
     <>
       <Layout>
         <Container className="mt-4">
-          {/* You can use isLoading instead of !book */}
           {isLoading && !error && <Loading />}
           {error && (
             <Alert
@@ -33,36 +32,32 @@ export default function BookByIdPage() {
               <p className="italic text-neutral-500 mb-4">โดย {book.author}</p>
               <div className="grid grid-cols-1 lg:grid-cols-3">
                 <img
-                  src="https://placehold.co/150x200"
+                  src={`https://placehold.co/150x200?text=${encodeURIComponent(
+                    book.title
+                  )}`}
                   alt={book.title}
                   className="w-full object-cover aspect-[3/4]"
                 />
                 <div className="col-span-2 px-4 space-y-2 py-4">
-                  <h3>รายละเอียดหนังสือ</h3>
-                  <p className="indent-4">
-                    {/* TODO: เพิ่มรายละเอียดหนังสือ */}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, neque.
-                    Necessitatibus nihil quibusdam molestiae, asperiores nesciunt quod aliquid
-                    accusamus iusto sint amet optio laudantium eius, facilis iure ipsa assumenda
-                    alias pariatur! Quis ad ratione amet fugiat, et culpa cupiditate, veritatis
-                    beatae sed voluptatum a reprehenderit id odit quas? Enim, earum?
-                  </p>
+                  <h3>details</h3>
+                  <p className="indent-4">{book.details}</p>
 
-                  <h3>เรื่องย่อ</h3>
-                  <p className="indent-4">
-                    {/* TODO: เพิ่มเรื่องย่อ */}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia officiis amet nemo
-                    ut placeat aliquam neque id voluptates quod nihil.
-                  </p>
+                  <h3>intro</h3>
+                  <p className="indent-4">{book.intro}</p>
 
-                  <h3>หมวดหมู่</h3>
-                  {/* TODO: เพิ่มหมวดหมู่(s) */}
-                  <div className="flex flex-wrap gap-2">
-                    <Badge color="teal">#หมวดหมู่ 1</Badge>
-                    <Badge color="teal">#หมวดหมู่ 2</Badge>
-                    <Badge color="teal">#หมวดหมู่ 3</Badge>
-                    <Badge color="teal">#หมวดหมู่ 4</Badge>
+                  <h3>category</h3>
+                  <div className="flex flex-wrap gap-2 pb-8">
+                    <Badge color="teal">{book.category}</Badge>
                   </div>
+                  <Button
+                    component={Link}
+                    to="/books"
+                    size="sm"
+                    variant="primary"
+                    className="flex items-center justify-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
+                  >
+                    back
+                  </Button>
                 </div>
               </div>
 
@@ -76,7 +71,7 @@ export default function BookByIdPage() {
                 className="mt-4"
                 leftSection={<IconEdit />}
               >
-                แก้ไขข้อมูลหนังสือ
+                edit
               </Button>
             </>
           )}
