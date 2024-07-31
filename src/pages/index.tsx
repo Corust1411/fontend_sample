@@ -2,7 +2,6 @@ import Layout from "../components/layout";
 import cafeBackgroundImage from "../assets/images/bg-cafe-1.jpg";
 import ajPanwitImage from "../assets/images/aj-panwit.jpg";
 import myImage from "../assets/images/me.jpg";
-import my2ndImage from "../assets/images/me2.jpg";
 
 export default function HomePage() {
   return (

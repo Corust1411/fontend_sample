@@ -8,3 +8,18 @@ export interface Book {
   intro: string;
   category: string;
 }
+export interface Coffee {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  is_available: boolean;
+}
+export interface Order {
+  id: number;
+  order_date: Date;
+  coffee_id: number;
+  quantity: number;
+  total_price: number;
+  notes: string;
+}
