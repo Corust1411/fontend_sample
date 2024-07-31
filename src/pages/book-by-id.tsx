@@ -39,13 +39,13 @@ export default function BookByIdPage() {
                   className="w-full object-cover aspect-[3/4]"
                 />
                 <div className="col-span-2 px-4 space-y-2 py-4">
-                  <h3>details</h3>
+                  <h3>รายละเอียดหนังสือ</h3>
                   <p className="indent-4">{book.details}</p>
 
-                  <h3>intro</h3>
+                  <h3>เรื่องย่อ</h3>
                   <p className="indent-4">{book.intro}</p>
 
-                  <h3>category</h3>
+                  <h3>หมวดหมู่</h3>
                   <div className="flex flex-wrap gap-2 pb-8">
                     <Badge color="teal">{book.category}</Badge>
                   </div>
@@ -56,7 +56,7 @@ export default function BookByIdPage() {
                     variant="primary"
                     className="flex items-center justify-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700"
                   >
-                    back
+                    กลับ
                   </Button>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function BookByIdPage() {
                 className="mt-4"
                 leftSection={<IconEdit />}
               >
-                edit
+                แก้ไขข้อมูลหนังสือ
               </Button>
             </>
           )}

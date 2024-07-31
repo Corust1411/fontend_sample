@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout";
-import { Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
+import { Button, Checkbox, Container, Divider, NumberInput, TextInput, Select } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import { useState } from "react";
 import axios, { AxiosError } from "axios";
@@ -18,12 +18,18 @@ export default function BookCreatePage() {
       author: "",
       year: 2024,
       is_published: false,
+      details: "",
+      short_details: "",
+      genre: "",
     },
 
     validate: {
       title: isNotEmpty("กรุณาระบุชื่อหนังสือ"),
       author: isNotEmpty("กรุณาระบุชื่อผู้แต่ง"),
       year: isNotEmpty("กรุณาระบุปีที่พิมพ์หนังสือ"),
+      details: isNotEmpty("กรุณาระบุรายละเอียดหนังสือ"),
+      short_details: isNotEmpty("กรุณาระบุเรื่องย่อหนังสือ"),
+      genre: isNotEmpty("กรุณาระบุหมวดหมู่หนังสือ"),
     },
   });
 
@@ -90,11 +96,22 @@ export default function BookCreatePage() {
               max={new Date().getFullYear() + 1}
               {...bookCreateForm.getInputProps("year")}
             />
-
-            {/* TODO: เพิ่มรายละเอียดหนังสือ */}
-            {/* TODO: เพิ่มเรื่องย่อ */}
-            {/* TODO: เพิ่มหมวดหมู่(s) */}
-
+            <TextInput
+              label="รายละเอียดหนังสือ"
+              placeholder="รายละเอียดหนังสือ"
+              {...bookCreateForm.getInputProps("details")}
+            />
+            <TextInput
+              label="เรื่องย่อ"
+              placeholder="เรื่องย่อ"
+              {...bookCreateForm.getInputProps("short_details")}
+            />
+            <Select
+              label="หมวดหมู่"
+              placeholder="เลือกหมวดหมู่"
+              data={['หนังสือวิทยาศาสตร์', 'นวนิยาย', 'การ์ตูน', 'ประวัติศาสตร์', 'ภาษาไทย']}
+              {...bookCreateForm.getInputProps("genre")}
+            />
             <Checkbox
               label="เผยแพร่"
               {...bookCreateForm.getInputProps("is_published", {
